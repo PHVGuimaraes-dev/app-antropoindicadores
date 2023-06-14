@@ -39,7 +39,7 @@ class HomePageState extends State<HomePage>{
                 Navigator.pushNamed(context, '/rota1');
               },
               style: ElevatedButton.styleFrom(
-                primary: Theme.of(context).primaryColor,
+                backgroundColor: Theme.of(context).primaryColor,
                 shape: const StadiumBorder(),
               ),
             ),
@@ -54,7 +54,7 @@ class HomePageState extends State<HomePage>{
                 AdaptiveTheme.of(context).toggleThemeMode();
               },
               style: ElevatedButton.styleFrom(
-                primary: Theme.of(context).primaryColor,
+                backgroundColor: Theme.of(context).primaryColor,
                 shape: const StadiumBorder(),
               ),
             ),

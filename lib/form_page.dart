@@ -59,7 +59,7 @@ class _FormPageState extends State<FormPage>{
               child: ElevatedButton(
                 child: Text(proxBot(widget.indexRota)), // mostra avançar ou finalizar
                 style: ElevatedButton.styleFrom(
-                  primary: Theme.of(context).primaryColor,
+                  backgroundColor: Theme.of(context).primaryColor,
                   shape: const StadiumBorder(),
                 ),
                 onPressed: () async{

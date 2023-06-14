@@ -137,7 +137,7 @@ class FormPage1State extends State<FormPage1> {
                   }
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Theme.of(context).primaryColor,
+                  backgroundColor: Theme.of(context).primaryColor,
                   shape: const StadiumBorder(),
                 ),
               ),

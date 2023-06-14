@@ -26,7 +26,7 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   final AdaptiveThemeMode? savedThemeMode;
   // ignore: "use_key_in_widget_constructors"
-  const MyApp({this.savedThemeMode});
+  const MyApp({Key? key, this.savedThemeMode}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return AdaptiveTheme(
