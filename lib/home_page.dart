@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:adaptive_theme/adaptive_theme.dart';
+import 'data_storage.dart';
 
 class HomePage extends StatefulWidget{
   const HomePage({Key? key}) : super(key: key);
@@ -11,7 +11,20 @@ class HomePage extends StatefulWidget{
     return HomePageState();
   }
 }
+
 class HomePageState extends State<HomePage>{
+
+  @override
+  void initState() {
+    super.initState();
+
+    DataStorage().loadJSON().then((questionsMap) {
+      setState(() {
+        questoes = questionsMap;
+      });
+    } );
+
+  }
 
   @override
   Widget build(BuildContext context){
@@ -35,7 +48,7 @@ class HomePageState extends State<HomePage>{
                 //moved to data_storage
                 //storage.headCSV();
                 //matrizHead.add(head);
-                storage.createCSV();
+                DataStorage().createCSV();
                 Navigator.pushNamed(context, '/rota1');
               },
               style: ElevatedButton.styleFrom(

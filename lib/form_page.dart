@@ -5,7 +5,7 @@ import 'data_storage.dart';
 import 'campo_select.dart';
 import 'home_page.dart';
 
-DataStorage storage = DataStorage();
+//DataStorage storage = DataStorage();
 
 String proxBot(int indexR){
   if(indexR == 17){
@@ -37,12 +37,19 @@ class _FormPageState extends State<FormPage>{
   final _formKey = GlobalKey<FormState>();
 
   @override
+  void initState() {
+    super.initState();
+
+
+  }
+
+  @override
   Widget build(BuildContext context){
     return Form(
       key: _formKey,
       child: Scaffold(
         appBar: AppBar(
-          title: Text(storage.perguntas(widget.indexP)),
+          title: Text(DataStorage().perguntas(widget.indexP)),
           backgroundColor: Theme.of(context).primaryColor,
         ),
         body: ListView(

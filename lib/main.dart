@@ -3,7 +3,6 @@ import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 //import 'package:path_provider/path_provider.dart';
 
-import 'data_storage.dart';
 import 'form_page.dart';
 import 'home_page.dart';
 import 'form_page_1.dart';
@@ -12,7 +11,7 @@ import 'form_page_2.dart';
 List<List<dynamic>> matriz = <List<dynamic>>[]; // Dados Acumulados
 List<dynamic> dadosList = List<dynamic>.filled(86, 'none'); // Form atual
 List<List<dynamic>> matrizHead = <List<dynamic>>[]; // cabeçalho
-DataStorage storage = DataStorage();
+//DataStorage storage = DataStorage();
 
 var csvResultados = 'none';
 const String unfilledText = 'Adicione uma resposta';
@@ -20,13 +19,18 @@ const String unfilledText = 'Adicione uma resposta';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final savedThemeMode = await AdaptiveTheme.getThemeMode();
+  //if(questoes.isEmpty){
+  //  DataStorage().loadJSON();
+  //}
   runApp(ProviderScope(child: MyApp(savedThemeMode: savedThemeMode)));
 }
 
 class MyApp extends StatelessWidget {
+
   final AdaptiveThemeMode? savedThemeMode;
   // ignore: "use_key_in_widget_constructors"
   const MyApp({Key? key, this.savedThemeMode}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return AdaptiveTheme(
