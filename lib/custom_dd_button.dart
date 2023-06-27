@@ -1,7 +1,7 @@
 // Para a configuração das caixas de seleção
 
 import 'package:flutter/material.dart';
-import 'main.dart';
+import 'data_storage.dart';
 
 class CustomDDButton extends StatefulWidget{
   const CustomDDButton({

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
+import 'data_storage.dart';
 
 //rota 1
 class FormPage1 extends StatefulWidget {

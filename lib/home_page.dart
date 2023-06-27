@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+
 import 'package:permission_handler/permission_handler.dart';
 import 'package:adaptive_theme/adaptive_theme.dart';
+
 import 'data_storage.dart';
 
 class HomePage extends StatefulWidget{
@@ -23,7 +25,6 @@ class HomePageState extends State<HomePage>{
         questoes = questionsMap;
       });
     } );
-
   }
 
   @override
