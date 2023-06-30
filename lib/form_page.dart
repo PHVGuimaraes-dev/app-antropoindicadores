@@ -5,8 +5,6 @@ import 'data_storage.dart';
 import 'campo_select.dart';
 import 'home_page.dart';
 
-//DataStorage storage = DataStorage();
-
 String proxBot(int indexR){
   if(indexR == 17){
     return 'Finalizar';
@@ -39,8 +37,6 @@ class _FormPageState extends State<FormPage>{
   @override
   void initState() {
     super.initState();
-
-
   }
 
   @override
@@ -75,7 +71,7 @@ class _FormPageState extends State<FormPage>{
 
                     if(widget.indexRota == 17){
                       // caso última rota, salva formulário no arquivo e volta a página inicial
-                      storage.saveForm(context);
+                      DataStorage().saveForm(context);
 
                       await Future.delayed(const Duration(seconds: 1), (){
                         Navigator.pushAndRemoveUntil<void>(context,

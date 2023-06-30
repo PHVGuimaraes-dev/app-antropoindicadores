@@ -18,7 +18,7 @@ class CustomDDButton extends StatefulWidget{
 }
 class CustomDDButtonState extends State<CustomDDButton>{
 
-  String dropdownValue = '1 (Inexistente/Nunca)';
+  String? dropdownValue;
   bool isSelected = false;
 
   @override
@@ -45,7 +45,7 @@ class CustomDDButtonState extends State<CustomDDButton>{
         return null;
       },
       onSaved: (text){
-        dadosList[widget.indexDados] = dropdownValue[0]; // test [0]
+        dadosList[widget.indexDados] = dropdownValue![0]; // test [0]
       },
       items: <String>[
         '1 (Inexistente/Nunca)',

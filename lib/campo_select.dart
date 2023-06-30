@@ -1,10 +1,7 @@
 // Para os campos de [pergunta + seleção]
-
 import 'package:flutter/material.dart';
 import 'custom_dd_button.dart';
 import 'data_storage.dart';
-//import 'main.dart'; // quando juntar
-DataStorage storage = DataStorage(); //para metodo de perguntas
 
 class CampoSelect extends StatelessWidget{
   const CampoSelect({
@@ -28,7 +25,7 @@ class CampoSelect extends StatelessWidget{
           child: SizedBox(
             width: 160,
             child: Text(
-              storage.perguntas(indicePergunta),
+              DataStorage().perguntas(indicePergunta),
               maxLines: null,
               textAlign: TextAlign.left,
               //textDirection: TextDirection.rtl,

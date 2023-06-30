@@ -3,7 +3,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'package:csv/csv.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -31,16 +30,13 @@ class DataStorage{
   }
 
   Future<File> get _localFile async {
-    final path = await _localPath;
 
-        File('$path/Formularios/Coleta_PROCAD.csv').create(recursive: true);
-        //String fileHead = const ListToCsvConverter().convert(matrizHead);
-        //File('$path/Formularios/Coleta_PROCAD.csv').writeAsString(fileHead);
-      //}} );
+    final path = await _localPath;
+    File('$path/Formularios/Coleta_PROCAD.csv').create(recursive: true);
     return File('$path/Formularios/Coleta_PROCAD.csv');
   }
 
-  void headCSV() {
+  void _headCSV() {
 
     List<String> head = <String>[];
 
@@ -62,7 +58,7 @@ class DataStorage{
   Future<File> createCSV() async{
 
     if(matrizHead.isEmpty){
-      headCSV();
+      _headCSV();
     }
     final file = await _localFile;
 
@@ -70,67 +66,66 @@ class DataStorage{
   }
 
   Future<File> writeCSV() async {
-    final file = await _localFile;
 
+    final file = await _localFile;
     // convert matrix to String and write as csv file
     String csv = const ListToCsvConverter().convert(matriz);
     // take file data that is already csv
+
     await file.readAsString().then((String data) {
+
       String fileData = data;
       if(data.isNotEmpty){ // if file had data before saving
         String dataSum = fileData + '\n' + csv;
         file.writeAsString(dataSum);
+
       }else{ // if empty, add head and data
         String fileHead = const ListToCsvConverter().convert(matrizHead);
         String dataSum = fileHead + '\n' + csv;
         file.writeAsString(dataSum);
       }
-
     });
-    // sum both to increment the file
     Future.delayed(const Duration(seconds: 1));
-    // Write the file
-    //return file.writeAsString(dataSum);
     return file;
   }
 
   Future<String> readCSV() async{
+
     try{
       final file = await _localFile;
-
       final contents = await file.readAsString();
-
       return contents;
     }catch (e){
-      // if encountering error:
       return 'read error';
     }
   }
 
+  //salvando formulário
   void saveForm(BuildContext context) async {
-    //salvando formulário
+
     matriz.add(dadosList);
+
     if (await Permission.storage.request().isGranted == true) {
       ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Salvando formulário...'),
-          ));
-      await writeCSV(); // test
+          const SnackBar(content: Text('Salvando formulário...')));
+      await writeCSV();
       await DataStorage().readCSV().then((String result) {
         csvResultados = result;
       });
       matriz.clear();
-      //salvo.
     }
   }
 
   // Deve ser carregado antes do método perguntas() para que este possua valores
   Future<Map<String,dynamic>> loadJSON() async {
+
     final String questions = await rootBundle.loadString(('assets/questions.json'));
     Map<String,dynamic> questionsMap = await json.decode(questions);
     return questionsMap;
   }
 
   String perguntas(int indice) {
+
       String pergunta = questoes[indice.toString()]["pergunta"];
       return pergunta;
   }

@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
     return AdaptiveTheme(
       light: ThemeData(
         brightness: Brightness.light,
-        primaryColor: Colors.green, // keyboard
+        primaryColor: Colors.green,
         scaffoldBackgroundColor: Colors.white,
 
       ),
