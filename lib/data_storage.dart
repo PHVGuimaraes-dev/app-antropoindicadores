@@ -124,7 +124,7 @@ class DataStorage{
     return questionsMap;
   }
 
-  String perguntas(int indice) {
+  String perguntas(indice) {
 
       String pergunta = questoes[indice.toString()]["pergunta"];
       return pergunta;

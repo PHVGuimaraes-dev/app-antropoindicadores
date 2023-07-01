@@ -15,30 +15,39 @@ class CampoSelect extends StatelessWidget{
 
   @override
   Widget build(BuildContext context){
-    return ListView(
-      physics: const NeverScrollableScrollPhysics(), //lista não rolável
-      shrinkWrap: true, // faz caber na página
-      children: <Widget>[
-        const SizedBox(height: 40),
-         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-          child: SizedBox(
-            width: 160,
+    return Card(
+      elevation: 0,
+      // #424242 card gray
+      //color: const Color.fromRGBO(48, 48, 48, 0),
+      margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+        side: BorderSide(
+          color: Theme.of(context).colorScheme.background),
+      ),
+      child: ListView(
+        physics: const NeverScrollableScrollPhysics(), //lista não rolável
+        shrinkWrap: true, // faz caber na página
+        children: <Widget>[
+          //const SizedBox(height: 40),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
             child: Text(
               DataStorage().perguntas(indicePergunta),
               maxLines: null,
               textAlign: TextAlign.left,
               //textDirection: TextDirection.rtl,
-              overflow:  TextOverflow.ellipsis,
+              //overflow:  TextOverflow.ellipsis,
+              //softWrap: true,
               style: const TextStyle(),
             ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-          child: CustomDDButton(indexDados: indiceVetor),
-        ),
-      ],
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+            child: CustomDDButton(indexDados: indiceVetor),
+          ),
+        ],
+      ),
     );
   }
 }

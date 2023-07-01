@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'data_storage.dart';
+import 'campo_escrita.dart';
 
 //rota 1
 class FormPage1 extends StatefulWidget {
@@ -10,6 +10,7 @@ class FormPage1 extends StatefulWidget {
     return FormPage1State();
   }
 }
+
 class FormPage1State extends State<FormPage1> {
 
   TextEditingController controller1 = TextEditingController();
@@ -39,85 +40,10 @@ class FormPage1State extends State<FormPage1> {
         ),
         body: ListView(
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-              child: TextFormField(
-                keyboardAppearance: Brightness.dark,
-                textInputAction: TextInputAction.next,
-                autofocus: true,
-                controller: controller1,
-                decoration: const InputDecoration(
-                  labelText: 'Bioma: ',
-                ),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return unfilledText;
-                  }
-                  return null;
-                },
-                onSaved: (text) {
-                  dadosList[0] = controller1.text;
-                },
-
-              ),
-            ), // Bioma
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-              child: TextFormField(
-                textInputAction: TextInputAction.next,
-                controller: controller2,
-                decoration: const InputDecoration(
-                  labelText: 'Código do formulário: ',
-                ),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return unfilledText;
-                  }
-                  return null;
-                },
-                onSaved: (text){
-                  dadosList[1] = controller2.text;
-                },
-              ),
-            ), // Código do form.
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-              child: TextFormField(
-                textInputAction: TextInputAction.next,
-                controller: controller3,
-                decoration: const InputDecoration(
-                  labelText: 'Ecossistema/comunidade(s): ',
-                ),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return unfilledText;
-                  }
-                  return null;
-                },
-                onSaved: (text){
-                  dadosList[2] = controller3.text;
-                },
-              ),
-            ), // Ecossist./Comunid.
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-              child: TextFormField(
-                //textInputAction: TextInputAction.next,
-                controller: controller4,
-                decoration: const InputDecoration(
-                  labelText: 'Perfil da comunidade: ',
-                ),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return unfilledText;
-                  }
-                  return null;
-                },
-                onSaved: (text){
-                  dadosList[3] = controller4.text;
-                },
-              ),
-            ), // Perfil comunid.
+            CampoEscrita(indice: '0A', cntrl: controller1), // Bioma
+            CampoEscrita(indice: '1A', cntrl: controller2), // Código do form.
+            CampoEscrita(indice: '2A', cntrl: controller3), // Ecossist./Comunid.
+            CampoEscrita(indice: '3A', cntrl: controller4), // Perfil comunid.
             Container(
               padding: const EdgeInsets.only(
                   left: 120.0, right: 120.0, top: 40.0),
