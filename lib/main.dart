@@ -26,13 +26,14 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.light,
         primaryColor: Colors.green,
         scaffoldBackgroundColor: Colors.white,
+        //iconTheme: const IconThemeData(color: Colors.white)
 
       ),
       dark: ThemeData(
         brightness: Brightness.dark,
         primaryColor: Colors.green[800], // keyboard
-        //scaffoldBackgroundColor: Colors.black45, // gray better
-        iconTheme: const IconThemeData(color: Colors.black45),
+        //scaffoldBackgroundColor: Colors., // #303030 : 48,48,48 : K 81
+        //iconTheme: const IconThemeData(color: Colors.black45),
       ),
 
       initial: savedThemeMode ?? AdaptiveThemeMode.light,
