@@ -2,3 +2,5 @@
 /windows/
 /ios/
 /test/
+/build/
+/.idea/
