@@ -24,7 +24,6 @@ dependencies:
   freezed: ^2.3.5
   path_provider: ^2.0.6
   permission_handler: ^10.3.0
-  open_file: ^3.3.2
 
 dev_dependencies:
   flutter_test:
