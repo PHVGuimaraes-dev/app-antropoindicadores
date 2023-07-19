@@ -30,7 +30,7 @@ class HomePageState extends State<HomePage>{
   Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Pagina inicial'),
+        title: const Text('App Antropoindicadores'),
         backgroundColor: Theme.of(context).primaryColor,
       ),
       body: Column(
@@ -41,13 +41,12 @@ class HomePageState extends State<HomePage>{
             child: ElevatedButton(
               child: const Text('Criar Formulário',
                   textAlign: TextAlign.justify),
+
               onPressed: () async{
-                //permissions here
+
                 await Permission.storage.request();
                 await Permission.manageExternalStorage.request();
-                //moved to data_storage
-                //storage.headCSV();
-                //matrizHead.add(head);
+
                 DataStorage().createCSV();
                 Navigator.pushNamed(context, '/rota1');
               },
@@ -57,6 +56,24 @@ class HomePageState extends State<HomePage>{
               ),
             ),
           ), // Criar Form.
+
+          Container(
+            padding: const EdgeInsets.only(left: 100.0, right: 80.0),
+            child: ElevatedButton(
+              child: const Text("Acessar Manual"),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Theme.of(context).primaryColor,
+                shape: const StadiumBorder(),
+              ),
+
+              onPressed: () async{
+                await Permission.storage.request();
+                DataStorage().acessManual();
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text("Manual disponível na pasta 'Documentos'")));
+              },
+            ),
+          ),
 
           Container(
             padding: const EdgeInsets.only(left: 100.0, right: 80.0),
@@ -75,10 +92,11 @@ class HomePageState extends State<HomePage>{
 
           Container(
             child: const Text(
-              '"INDICADORES ANTRÓPICOS"  \n\n'
-                  'DataForm 1.2 - PROCAD - AMAZÔNIA \n\n'
-                  'Desenvolvido por Bel. Pedro Guimarães \n'
+              'app-antropoindicadores 1.3.0 - PROCAD - AMAZÔNIA \n\n'
+                  'Desenvolvedor: Bel. Pedro Guimarães \n'
                   'Coordenação: Prof. Dr. Marcos Seruffo\n\n'
+                  'Desenvolvido para o projeto: \n'
+                  'INDICADORES ANTRÓPICOS - PPGEAA  \n'
                   'Universidade Federal do Pará',
               textAlign: TextAlign.center,
             ),

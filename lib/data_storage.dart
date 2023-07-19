@@ -1,8 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:csv/csv.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -128,6 +129,18 @@ class DataStorage{
 
       String pergunta = questoes[indice.toString()]["pergunta"];
       return pergunta;
+  }
+
+  Future<File> acessManual() async{
+
+    String assetName = 'INDICADORES_ANTROPICOS-Manual_do_Usuário_e_Guia_de_Campo v2.pdf';
+    final ByteData assetData = await rootBundle.load('assets/$assetName');
+    final List<int> bytes = assetData.buffer.asUint8List();
+
+    final String dir = await _localPath;
+    final String filePath = '$dir/$assetName';
+    return File(filePath).writeAsBytes(bytes);
+
   }
 
 }
