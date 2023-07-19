@@ -30,7 +30,8 @@ class CustomDDButtonState extends State<CustomDDButton>{
       iconSize: 24,
       style: const TextStyle(
         fontSize: 16,
-        color: Colors.green,
+        fontWeight: FontWeight.bold,
+        color: Colors.blue,
       ),
       onChanged: (String? newValue){
         setState((){

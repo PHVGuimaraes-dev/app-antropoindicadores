@@ -26,6 +26,9 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.light,
         primaryColor: Colors.green,
         scaffoldBackgroundColor: Colors.white,
+        textTheme: Theme.of(context).textTheme.apply(
+          fontSizeFactor: 1.1, fontSizeDelta: 1.0
+        )
         //iconTheme: const IconThemeData(color: Colors.white)
 
       ),

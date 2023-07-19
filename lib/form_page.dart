@@ -47,8 +47,8 @@ class _FormPageState extends State<FormPage>{
         body: ListView(
           children: <Widget>[
             //const SizedBox(height: 40,),
-            Flexible(
-                child: Column(
+                Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     CampoSelect(indicePergunta: widget.indexP+1, indiceVetor: widget.indexV),
                     CampoSelect(indicePergunta: widget.indexP+2, indiceVetor: widget.indexV+1),
@@ -56,8 +56,7 @@ class _FormPageState extends State<FormPage>{
                     CampoSelect(indicePergunta: widget.indexP+4, indiceVetor: widget.indexV+3),
                     CampoSelect(indicePergunta: widget.indexP+5, indiceVetor: widget.indexV+4),
                   ],
-                )
-            ),
+                ),
             Container(
               padding: const EdgeInsets.only(
                   left: 120.0, right: 120.0, top: 40.0, bottom: 10.0),
@@ -68,24 +67,13 @@ class _FormPageState extends State<FormPage>{
                   shape: const StadiumBorder(),
                 ),
                 onPressed: () async{
+
                   if (_formKey.currentState!.validate()) {
                     // se dados validos, salva página no vetor
                     _formKey.currentState!.save();
-
                     // caso última rota, salva formulário no arquivo e volta a página inicial
                     if(widget.indexRota == 17){
-
-                      DataStorage().saveForm(context);
-
-                      await Future.delayed(const Duration(seconds: 1), (){
-                        Navigator.pushAndRemoveUntil<void>(context,
-                          MaterialPageRoute<void>(builder: (BuildContext context)
-                          => const HomePage()),
-                          ModalRoute.withName('/home'));
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Fomulário salvo'))
-                        );
-                      });
+                      _savingDialog();
                     }else {
                       // em outro caso, passa para a próxima rota
                       Navigator.pushNamed(context, '/rota${widget.indexRota+1}');
@@ -98,5 +86,43 @@ class _FormPageState extends State<FormPage>{
         ),
       ),
     );
+  }
+
+  Future<void> _savingDialog() async{
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text("Confirmar Finalização"),
+            content: const SingleChildScrollView(
+              child: ListBody(
+                children: [
+                  Text("O questionário será finalizado e os dados serão salvos."),
+                  Text("Confirma o procedimento?")
+                ],
+              ),
+            ),
+            actions: [
+              TextButton(
+                  onPressed: () async{
+
+                    DataStorage().saveForm(context);
+                    await Future.delayed(const Duration(seconds: 1), (){
+                      Navigator.pushAndRemoveUntil<void>(context,
+                          MaterialPageRoute<void>(builder:
+                              (BuildContext context) => const HomePage()),
+                          ModalRoute.withName('/home'));
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Fomulário salvo')));
+                    });
+                  },
+                  child: const Text("Confirmar")),
+
+              TextButton(
+                  onPressed: () {Navigator.of(context).pop();},
+                  child: const Text("Voltar"))
+            ],
+          );
+        });
   }
 }
