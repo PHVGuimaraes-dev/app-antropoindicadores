@@ -24,8 +24,7 @@ class CampoSelect extends StatelessWidget{
           margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
           shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
-          side: BorderSide(
-              color: Theme.of(context).colorScheme.background),
+          //side: BorderSide(color: Theme.of(context).colorScheme.background),
           ),
           child: ListView(
             physics: const NeverScrollableScrollPhysics(), //lista não rolável

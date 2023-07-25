@@ -33,13 +33,13 @@ class FormPage2State extends State<FormPage2>{
         ),
         body: ListView(
           children: <Widget>[
-            CampoEscrita(indice: '4A', cntrl: controller1, icone: Icons.person), // Nome(inform.pri.)
-            CampoEscrita(indice: '5A', cntrl: controller2, icone: Icons.groups_3), // Etnia
-            CampoEscrita(indice: '6A', cntrl: controller3, icone: Icons.wc), // Gênero
-            CampoEscrita(indice: '7A', cntrl: controller4, icone: Icons.calendar_month), // Idade
-            CampoEscrita(indice: '8A', cntrl: controller5, icone: Icons.school), // Formação
-            CampoEscrita(indice: '9A', cntrl: controller6, icone: Icons.work), // Ocupação
-            CampoEscrita(indice: '10A', cntrl: controller7, icone: Icons.phone), // Contatos
+            CampoEscrita(indice: '4', cntrl: controller1, icone: Icons.person), // Nome(inform.pri.)
+            CampoEscrita(indice: '5', cntrl: controller2, icone: Icons.groups_3), // Etnia
+            CampoEscrita(indice: '6', cntrl: controller3, icone: Icons.wc), // Gênero
+            CampoEscrita(indice: '7', cntrl: controller4, icone: Icons.calendar_month), // Idade
+            CampoEscrita(indice: '8', cntrl: controller5, icone: Icons.school), // Formação
+            CampoEscrita(indice: '9', cntrl: controller6, icone: Icons.work), // Ocupação
+            CampoEscrita(indice: '10', cntrl: controller7, icone: Icons.phone), // Contatos
             Container(
               padding: const EdgeInsets.only(
                   left: 120.0, right: 120.0, top: 40.0),

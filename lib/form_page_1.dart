@@ -40,10 +40,10 @@ class FormPage1State extends State<FormPage1> {
         ),
         body: ListView(
           children: <Widget>[
-            CampoEscrita(indice: '0A', cntrl: controller1, icone: Icons.forest), // Bioma
-            CampoEscrita(indice: '1A', cntrl: controller2, icone: Icons.abc), // Código do form.
-            CampoEscrita(indice: '2A', cntrl: controller3, icone: Icons.house), // Ecossist./Comunid.
-            CampoEscrita(indice: '3A', cntrl: controller4, icone: Icons.group), // Perfil comunid.
+            CampoEscrita(indice: '0', cntrl: controller1, icone: Icons.forest), // Bioma
+            CampoEscrita(indice: '1', cntrl: controller2, icone: Icons.abc), // Código do form.
+            CampoEscrita(indice: '2', cntrl: controller3, icone: Icons.house), // Ecossist./Comunid.
+            CampoEscrita(indice: '3', cntrl: controller4, icone: Icons.group), // Perfil comunid.
             Container(
               padding: const EdgeInsets.only(
                   left: 120.0, right: 120.0, top: 40.0),
@@ -52,7 +52,7 @@ class FormPage1State extends State<FormPage1> {
                 onPressed: () {
                   // It returns true if the form is valid, otherwise returns false
                   if (_formKey1.currentState!.validate()) {
-                    // If the form is valid, display a Snackbar.
+
                     _formKey1.currentState!.save(); //save state
                     // clear controllers
                     controller1.clear();

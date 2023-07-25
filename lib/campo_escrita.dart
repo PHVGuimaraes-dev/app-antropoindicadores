@@ -25,7 +25,7 @@ class CampoEscrita extends StatelessWidget {
           autofocus: true,
           controller: cntrl,
           decoration: InputDecoration(
-            labelText: DataStorage().perguntas(indice),
+            labelText: DataStorage().perguntas("${indice}A"),
             icon: Icon(icone)
           ),
 
@@ -37,7 +37,7 @@ class CampoEscrita extends StatelessWidget {
           },
 
           onSaved: (text) {
-            dadosList[0] = cntrl.text;
+            dadosList[int.parse(indice)] = cntrl.text;
           },
         ),
     );
