@@ -1,0 +1,17 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: App Antropoindicadores
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Pedro Henrique
+    family-names: Guimarães
+    email: phvguimaraes.dev@gmail.com
+    affiliation: Universidade Federal do Pará - UFPA
+    orcid: 'https://orcid.org/0009-0006-2350-2451'
+repository-code: 'https://github.com/PHVGuimaraes-dev/app-antropoindicadores'
+license: GPL-3.0-or-later
