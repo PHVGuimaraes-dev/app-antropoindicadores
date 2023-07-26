@@ -92,7 +92,7 @@ class HomePageState extends State<HomePage>{
 
           Container(
             child: const Text(
-              'app-antropoindicadores 1.3.0 - PROCAD - AMAZÔNIA \n\n'
+              'app-antropoindicadores 1.3.1 - PROCAD - AMAZÔNIA \n\n'
                   'Desenvolvedor: Bel. Pedro Guimarães \n'
                   'Coordenação: Prof. Dr. Marcos Seruffo\n\n'
                   'Desenvolvido para o projeto: \n'
