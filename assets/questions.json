@@ -57,7 +57,7 @@
   "37": { "coluna" : "P31", "pergunta" : "31. A terra na comunidade é boa para o plantio?" },
   "38": { "coluna" : "P32", "pergunta" : "32. O ar que se respira na comunidade tem boa qualidade?" },
   "39": { "coluna" : "P33", "pergunta" : "33. O depósito de lixo da comunidade é adequado?" },
-  "40": { "coluna" : "P34", "pergunta" : "34. A intensidade dos ventos e das chuvas se mantém nestável nos últimos cinco anos?" },
+  "40": { "coluna" : "P34", "pergunta" : "34. A intensidade dos ventos e das chuvas se mantém estável nos últimos cinco anos?" },
   "41": { "coluna" : "P35", "pergunta" : "35. O nível das águas dos rios e das marés se mantém estável nos últimos cinco anos?" },
 
   "42": { "coluna" : "T08", "pergunta" : "Territorialidade" },
@@ -96,7 +96,7 @@
   "71": { "coluna" : "P60", "pergunta" : "60. A comunidade participa do planejamento e da gestão do município?" },
 
   "72": { "coluna" : "T13", "pergunta" : "Economia circular" },
-  "73": { "coluna" : "P61", "pergunta" : "61. Para você, consumir menos melhora ajuda a melhorar o meio ambiente?" },
+  "73": { "coluna" : "P61", "pergunta" : "61. Para você, consumir menos ajuda a melhorar o meio ambiente?" },
   "74": { "coluna" : "P62", "pergunta" : "62. Em sua casa existe aproveitamento do lixo (seco/molhado)?" },
   "75": { "coluna" : "P63", "pergunta" : "63. Em sua casa vocês costumam consertar os bens danificados (roupa, equipamento, objetos)?" },
   "76": { "coluna" : "P64", "pergunta" : "64. Em sua casa vocês costumam compartilhar o uso ou doar os bens que não querem mais?" },
