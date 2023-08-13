@@ -49,6 +49,7 @@ class CustomDDButtonState extends State<CustomDDButton>{
         dadosList[widget.indexDados] = dropdownValue![0]; // test [0]
       },
       items: <String>[
+        'X (Não informado)'
         '1 (Inexistente/Nunca)',
         '2 (Quase nunca)',
         '3 (Mais ou menos)',
