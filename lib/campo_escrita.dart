@@ -26,6 +26,7 @@ class CampoEscrita extends StatelessWidget {
           controller: cntrl,
           decoration: InputDecoration(
             labelText: DataStorage().perguntas("${indice}A"),
+
             icon: Icon(icone)
           ),
 

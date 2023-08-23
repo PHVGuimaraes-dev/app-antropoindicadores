@@ -55,10 +55,10 @@ class FormPage1State extends State<FormPage1> {
 
                     _formKey1.currentState!.save(); //save state
                     // clear controllers
-                    controller1.clear();
-                    controller2.clear();
-                    controller3.clear();
-                    controller4.clear();
+                    //controller1.clear();
+                    //controller2.clear();
+                    //controller3.clear();
+                    //controller4.clear();
                     Navigator.pushNamed(context, '/rota2');
                   }
                 },
@@ -76,11 +76,11 @@ class FormPage1State extends State<FormPage1> {
 
   @override
   void dispose() {
+    focusNode1.dispose();
     controller1.dispose();
     controller2.dispose();
     controller3.dispose();
     controller4.dispose();
-    focusNode1.dispose();
     super.dispose();
   }
 }
