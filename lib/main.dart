@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'form_page.dart';
-import 'home_page.dart';
-import 'form_page_1.dart';
-import 'form_page_2.dart';
+import 'ui/form_page.dart';
+import 'ui/home_page.dart';
+import 'ui/form_page_1.dart';
+import 'ui/form_page_2.dart';
 
 Future<void> main() async {
+
   WidgetsFlutterBinding.ensureInitialized();
   final savedThemeMode = await AdaptiveTheme.getThemeMode();
   runApp(ProviderScope(child: MyApp(savedThemeMode: savedThemeMode)));
@@ -16,24 +17,22 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
 
   final AdaptiveThemeMode? savedThemeMode;
-  // ignore: "use_key_in_widget_constructors"
   const MyApp({Key? key, this.savedThemeMode}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
     return AdaptiveTheme(
       light: ThemeData(
         brightness: Brightness.light,
         primaryColor: Colors.green,
-        scaffoldBackgroundColor: Colors.white,
-        //iconTheme: const IconThemeData(color: Colors.white)
+        scaffoldBackgroundColor: Colors.grey,
 
       ),
       dark: ThemeData(
         brightness: Brightness.dark,
-        primaryColor: Colors.green[800], // keyboard
+        primaryColor: Colors.green.shade800, // keyboard
         //scaffoldBackgroundColor: Colors., // #303030 : 48,48,48 : K 81
-        //iconTheme: const IconThemeData(color: Colors.black45),
       ),
 
       initial: savedThemeMode ?? AdaptiveThemeMode.light,

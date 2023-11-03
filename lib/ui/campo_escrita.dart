@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'data_storage.dart';
+import '../helpers/data_storage.dart';
 
 class CampoEscrita extends StatelessWidget {
   const CampoEscrita({
