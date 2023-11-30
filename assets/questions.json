@@ -11,6 +11,10 @@
   "9A":  { "coluna" : "Ocupação", "pergunta" : "Ocupação: " },
   "10A":  { "coluna" : "Contatos", "pergunta" : "Contatos: " },
 
+  "0B":  { "coluna" : "E01", "pergunta" : "Sobrevivência e Necessidades Humanas" },
+  "1B":  { "coluna" : "E01", "pergunta" : "Conflitos e Consequeências Ambientais" },
+  "2B":  { "coluna" : "E01", "pergunta" : "Sustentabilidade e Bom Viver" },
+
   "0":  { "coluna" : "T01", "pergunta" : "Alimentação e saúde" },
   "1":  { "coluna" : "P01", "pergunta" : "1. Sua família se alimenta ao menos três vezes ao dia?" },
   "2":  { "coluna" : "P02", "pergunta" : "2. Sua família consome diferentes tipos de alimentos?" },

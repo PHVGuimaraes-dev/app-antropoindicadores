@@ -6,12 +6,14 @@ class CampoEscrita extends StatelessWidget {
     super.key,
     required this.indice,
     required this.cntrl,
-    required this.icone,
+    this.icone,
+    this.keyboard,
   });
 
   final String indice;
   final TextEditingController cntrl;
-  final IconData icone;
+  final IconData? icone;
+  final TextInputType? keyboard;
 
   @override
   Widget build(BuildContext context) {
@@ -21,13 +23,14 @@ class CampoEscrita extends StatelessWidget {
         child: TextFormField(
 
           keyboardAppearance: ThemeData().brightness,
+          keyboardType: keyboard ?? TextInputType.text,
           textInputAction: TextInputAction.next,
           autofocus: true,
           controller: cntrl,
           decoration: InputDecoration(
             labelText: DataStorage().perguntas("${indice}A"),
 
-            icon: Icon(icone)
+            icon: icone == null ? Icon(icone) : null,
           ),
 
           validator: (value) {
