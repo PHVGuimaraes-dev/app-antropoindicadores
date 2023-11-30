@@ -1,19 +1,23 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
+
 import 'package:csv/csv.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 List<List<dynamic>> matrizHead = <List<dynamic>>[]; // cabeçalho
 List<List<dynamic>> matriz = <List<dynamic>>[]; // dados acumulados
-List<dynamic> dadosList = List<dynamic>.filled(86, 'none'); // form atual
+List<dynamic> dadosList = List<dynamic>.filled(86, ''); // form atual
 Map<String,dynamic> questoes = {}; // perguntas
+List<String> formCache = [];
 
-var csvResultados = 'none';
+var csvResultados = '';
 const String unfilledText = 'Adicione uma resposta';
 
 class DataStorage{
@@ -35,6 +39,7 @@ class DataStorage{
     final path = await _localPath;
     File('$path/Formularios/Coleta_PROCAD.csv').create(recursive: true);
     return File('$path/Formularios/Coleta_PROCAD.csv');
+
   }
 
   void _headCSV() {
@@ -131,16 +136,42 @@ class DataStorage{
       return pergunta;
   }
 
-  Future<File> acessManual() async{
+  Future<File> getUserGuidePath() async{
 
     String assetName = 'INDICADORES_ANTROPICOS-Manual_do_Usuário_e_Guia_de_Campo v2.pdf';
     final ByteData assetData = await rootBundle.load('assets/$assetName');
     final List<int> bytes = assetData.buffer.asUint8List();
 
     final String dir = await _localPath;
+
     final String filePath = '$dir/$assetName';
     return File(filePath).writeAsBytes(bytes);
 
+
+  }
+
+  Future<File> getUserGuide() async {
+    Completer<File> completer = Completer();
+
+    try {
+      await Permission.storage.request();
+      String assetName = 'INDICADORES_ANTROPICOS-Manual_do_Usuário_e_Guia_de_Campo v2.pdf';
+      // String filename = 'App Antropoindicadores - Manual do Usuário + Guia de campo - v2.pdf';
+      var dir = await getApplicationDocumentsDirectory();
+      File file = File("${dir.path}/$assetName");
+
+      //var data = await rootBundle.load(assetName);
+      //var bytes = data.buffer.asUint8List();
+      final ByteData assetData = await rootBundle.load('assets/$assetName');
+      final List<int> bytes = assetData.buffer.asUint8List();
+
+      await file.writeAsBytes(bytes, flush: true);
+      completer.complete(file);
+    } catch (e) {
+      throw Exception('Error parsing asset file!');
+    }
+
+    return completer.future;
   }
 
 }

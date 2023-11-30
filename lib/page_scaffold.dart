@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:adaptive_theme/adaptive_theme.dart';
 
 class PageScaffold extends StatelessWidget {
   final String title;
@@ -12,17 +13,23 @@ class PageScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
           title: Text(title),
           elevation: 0,
           backgroundColor: Theme.of(context).primaryColor,
+          actions: [
+            IconButton(
+                onPressed: () { AdaptiveTheme.of(context).toggleThemeMode(); },
+                icon: const Icon(Icons.brightness_6_outlined)
+            ),
+          ],
       ),
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      body: Padding(
-          padding: const EdgeInsets.all(16),
-          child: child
-      ),
+      body: SafeArea(
+          minimum: const EdgeInsets.all(16),
+          child: child)
     );
   }
 }
