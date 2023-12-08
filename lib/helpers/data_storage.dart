@@ -160,7 +160,7 @@ class DataStorage{
 
   Future<File> getUserGuidePath() async{
 
-    String assetName = 'INDICADORES_ANTROPICOS-Manual_do_Usuário_e_Guia_de_Campo v2.pdf';
+    String assetName = 'INDICADORES ANTROPICOS.Manual_do_Usuário_e_Guia_de_Campo v3.pdf';
     final ByteData assetData = await rootBundle.load('assets/$assetName');
     final List<int> bytes = assetData.buffer.asUint8List();
 
@@ -175,7 +175,7 @@ class DataStorage{
 
     try {
       await Permission.storage.request();
-      String assetName = 'INDICADORES_ANTROPICOS-Manual_do_Usuário_e_Guia_de_Campo v2.pdf';
+      String assetName = 'INDICADORES ANTROPICOS.Manual_do_Usuário_e_Guia_de_Campo v3.pdf';
       // String filename = 'App Antropoindicadores - Manual do Usuário + Guia de campo - v2.pdf';
       var dir = await getApplicationDocumentsDirectory();
       File file = File("${dir.path}/$assetName");
