@@ -29,7 +29,11 @@ class PageScaffold extends StatelessWidget {
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
           minimum: const EdgeInsets.all(16),
-          child: child)
+          //child: PageStorage(
+            //bucket: PageStorageBucket(),
+            child: child,
+          //)
+      )
     );
   }
 }

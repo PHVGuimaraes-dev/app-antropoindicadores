@@ -9,7 +9,6 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:csv/csv.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 List<List<dynamic>> matrizHead = <List<dynamic>>[]; // cabeçalho
 List<List<dynamic>> matriz = <List<dynamic>>[]; // dados acumulados
@@ -17,28 +16,51 @@ List<dynamic> dadosList = List<dynamic>.filled(86, ''); // form atual
 Map<String,dynamic> questoes = {}; // perguntas
 List<String> formCache = [];
 
-var csvResultados = '';
-const String unfilledText = 'Adicione uma resposta';
-
 class DataStorage{
 
   Future<String> get _localPath async {
 
-    final dir = Directory('/storage/emulated/0/Documents');
-
-    if (Platform.isIOS) {
-      Directory iosDir = await getApplicationDocumentsDirectory();
-      return iosDir.path;
-    }
-
+    final dir = await getApplicationDocumentsDirectory();
     return dir.path;
   }
 
   Future<File> get _localFile async {
 
     final path = await _localPath;
-    File('$path/Formularios/Coleta_PROCAD.csv').create(recursive: true);
-    return File('$path/Formularios/Coleta_PROCAD.csv');
+    File file = await File('$path/Formularios/Coleta_PROCAD.csv')
+        .create(recursive: true);
+    return file;
+
+  }
+
+  Future<String> get _docPath async {
+
+    try{
+      final dir = Directory('/storage/emulated/0/Documents');
+      return dir.path;
+    }catch(e){
+      throw Exception("Error: $e");
+    }
+
+}
+
+  Future<File> get _docFile async {
+
+    final path = await _docPath;
+    File docFile = await File('$path/Formularios/Coleta_PROCAD.csv')
+        .create(recursive: true);
+    return docFile;
+  }
+
+  Future<File> acessCSV() async {
+
+      String csvContent = await readCSV();
+
+      File file = await _docFile;
+      if(csvContent.isNotEmpty){
+        file.writeAsString(csvContent);
+      }
+      return file;
 
   }
 
@@ -115,9 +137,6 @@ class DataStorage{
       ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Salvando formulário...')));
       await writeCSV();
-      await DataStorage().readCSV().then((String result) {
-        csvResultados = result;
-      });
       matriz.clear();
     }
   }
@@ -136,6 +155,9 @@ class DataStorage{
       return pergunta;
   }
 
+
+
+
   Future<File> getUserGuidePath() async{
 
     String assetName = 'INDICADORES_ANTROPICOS-Manual_do_Usuário_e_Guia_de_Campo v2.pdf';
@@ -146,8 +168,6 @@ class DataStorage{
 
     final String filePath = '$dir/$assetName';
     return File(filePath).writeAsBytes(bytes);
-
-
   }
 
   Future<File> getUserGuide() async {
@@ -170,7 +190,6 @@ class DataStorage{
     } catch (e) {
       throw Exception('Error parsing asset file!');
     }
-
     return completer.future;
   }
 

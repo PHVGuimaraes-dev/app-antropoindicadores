@@ -15,11 +15,19 @@ class FormDataPage extends StatefulWidget {
 
 class FormDataPageState extends State<FormDataPage> {
 
+  //final PageStorageKey _storageKey = const PageStorageKey(1);
+
   List<TextEditingController> cntrls1 = List.generate(4, (index) =>
       TextEditingController());
 
   final _formKey1 = GlobalKey<FormState>();
   final FocusNode focusNode1 = FocusNode();
+
+@override
+  void initState() {
+    //_loadFormState();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +36,7 @@ class FormDataPageState extends State<FormDataPage> {
       child: PageScaffold(
           title: 'Página - 1 de 17',
           child: ListView(
+            //key: _storageKey,
             children: <Widget>[
               const StepProgressIndicator(totalSteps: 17, currentStep: 1,
                   size: 6.0 ,selectedColor: Colors.green),
@@ -75,6 +84,19 @@ class FormDataPageState extends State<FormDataPage> {
     ); // dadosList de 0 a 3
   }
 
+  void _loadFormState() {
+    // Load form field values from PageStorage
+    Map<String, dynamic>? savedState = PageStorage.of(context).readState(context);
+    if (savedState != null) {
+      setState(() {
+        cntrls1[0].text = savedState['0'].toString();
+        cntrls1[1].text = savedState['1'].toString();
+        cntrls1[2].text = savedState['2'].toString();
+        cntrls1[3].text = savedState['3'].toString();
+      });
+    }
+  }
+
   @override
   void dispose() {
     focusNode1.dispose();
@@ -83,5 +105,6 @@ class FormDataPageState extends State<FormDataPage> {
     }
     super.dispose();
   }
+
 
 }

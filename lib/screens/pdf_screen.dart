@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
+import 'package:formularios_antropoindicadores/helpers/data_storage.dart';
 
 class PDFScreen extends StatefulWidget {
   final String? path;
@@ -29,7 +30,10 @@ class _PDFScreenState extends State<PDFScreen> with WidgetsBindingObserver {
         actions: [
           IconButton(
             icon: const Icon(Icons.download),
-            onPressed: () {
+            onPressed: () async {
+              await DataStorage().getUserGuide();
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                  content: Text("Manual disponível na pasta 'Documentos'")));
             },
           ),
         ],

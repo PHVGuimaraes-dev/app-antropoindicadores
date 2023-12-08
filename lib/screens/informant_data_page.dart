@@ -14,10 +14,18 @@ class InformantDataPage extends StatefulWidget {
 }
 class InformantDataPageState extends State<InformantDataPage>{
 
+  //final PageStorageKey _storageKey = const PageStorageKey(2);
+
   List<TextEditingController> cntrls2 = List.generate(7, (index) =>
       TextEditingController());
 
   final _formKey2 = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    //_loadFormState();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context){
@@ -26,7 +34,8 @@ class InformantDataPageState extends State<InformantDataPage>{
       child: PageScaffold(
         title: 'Página - 2 de 17',
         child: ListView(
-        children: <Widget>[
+          //key: _storageKey,
+          children: <Widget>[
           const StepProgressIndicator(totalSteps: 17, currentStep: 2,
               size: 6.0 ,selectedColor: Colors.green),
           const SizedBox(height: 16, width: double.infinity),
@@ -58,7 +67,7 @@ class InformantDataPageState extends State<InformantDataPage>{
               onPressed: () async{
                 if (_formKey2.currentState!.validate()) {
                   _formKey2.currentState!.save();
-                  Navigator.pushNamed(context, '/rota2');
+                  Navigator.pushNamed(context, '/rota3');
                 }
               },
 
@@ -73,6 +82,22 @@ class InformantDataPageState extends State<InformantDataPage>{
       ),
       )
     ); // dadosList de 4 a 10
+  }
+
+  void _loadFormState() {
+    // Load form field values from PageStorage
+    Map<String, dynamic>? savedState = PageStorage.of(context).readState(context);
+    if (savedState != null) {
+      setState(() {
+        cntrls2[0].text = savedState['4'].toString();
+        cntrls2[1].text = savedState['5'].toString();
+        cntrls2[2].text = savedState['6'].toString();
+        cntrls2[3].text = savedState['7'].toString();
+        cntrls2[4].text = savedState['8'].toString();
+        cntrls2[5].text = savedState['9'].toString();
+        cntrls2[6].text = savedState['10'].toString();
+      });
+    }
   }
 
   @override

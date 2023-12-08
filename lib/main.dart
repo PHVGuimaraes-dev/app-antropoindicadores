@@ -8,10 +8,6 @@ import 'screens/home_page.dart';
 import 'screens/form_data_page.dart';
 import 'screens/informant_data_page.dart';
 
-// TODO: Navegação livre entre páginas
-// TODO: Não apagar abas ao voltar
-// TODO: Descrição de itens
-// TODO: Padronização de UI
 
 Future<void> main() async {
 

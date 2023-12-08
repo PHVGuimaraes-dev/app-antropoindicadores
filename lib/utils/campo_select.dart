@@ -5,10 +5,12 @@ import '../helpers/data_storage.dart';
 class CampoSelect extends StatefulWidget {
   const CampoSelect({
     Key? key,
+    required this.keyValue,
     required this.indicePergunta,
     required this.indiceVetor
   }) : super(key:key);
 
+  final String keyValue;
   final int indicePergunta;
   final int indiceVetor;
 
@@ -17,6 +19,10 @@ class CampoSelect extends StatefulWidget {
 }
 
 class _CampoSelectState extends State<CampoSelect> {
+
+  String? dropdownValue;
+  bool isSelected = false;
+
   @override
   Widget build(BuildContext context){
     return Flexible(
@@ -24,15 +30,13 @@ class _CampoSelectState extends State<CampoSelect> {
         child: Card(
           elevation: 0,
           color: const Color(0x3032cd32), //0xAARRGGBB
-
           margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
-            //side: BorderSide(color: Theme.of(context).colorScheme.background),
           ),
           child: ListView(
             physics: const NeverScrollableScrollPhysics(), //lista não rolável
-            shrinkWrap: true, // faz caber na página
+            shrinkWrap: true,
             children: <Widget>[
               //const SizedBox(height: 40),
               Padding(
@@ -56,10 +60,16 @@ class _CampoSelectState extends State<CampoSelect> {
 
   Widget _dropdown(){
 
-    String? dropdownValue;
-    bool isSelected = false;
+    //Map<String, dynamic>? savedState = PageStorage.of(context).readState(context);
+
+    //if (savedState != null) {
+    //  setState(() {
+    //    dropdownValue = savedState[widget.keyValue];
+    //  });
+    //}
 
     return  DropdownButtonFormField(
+      //key: ValueKey(widget.keyValue),
       hint: const Text('Selecionar'),
       value: dropdownValue,
       icon: const Icon(Icons.arrow_downward),
@@ -82,7 +92,13 @@ class _CampoSelectState extends State<CampoSelect> {
         return null;
       },
       onSaved: (text){
-        dadosList[widget.indiceVetor] = dropdownValue![0]; // test [0]
+
+        dadosList[widget.indiceVetor] = dropdownValue![0];
+
+        //PageStorage.of(context).writeState(context, {
+        //  widget.keyValue: dropdownValue!,
+        //}
+        //);
       },
       items: <String>[
         'X (Não informado)',
